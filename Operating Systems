@@ -1,3 +1,8 @@
 Adding Important Links which can be seen later for OS info purposes : -
 https://stackoverflow.com/questions/24057331/is-accessing-data-in-the-heap-faster-than-from-the-stack
 https://stackoverflow.com/questions/161053/which-is-faster-stack-allocation-or-heap-allocation
+
+FYI - a stack is faster than a heap, though insignificantly so ! the program has to keep track of how much memory is in use at which address,not the case for stack.
+The stack is faster because the access pattern makes it trivial to allocate and deallocate memory from it (a pointer/integer is simply incremented or decremented), while the heap has much more complex bookkeeping involved in an allocation or free. Also, each byte in the stack tends to be reused very frequently which means it tends to be mapped to the processor's cache, making it very fast. Another performance hit for the heap is that the heap, being mostly a global resource, typically has to be multi-threading safe, i.e. each allocation and deallocation needs to be - typically - synchronized with "all" other heap accesses in the program. 
+
+TO DO - look at more about static global etc variables
